@@ -2,6 +2,7 @@ package com.exponotificationsexample
 
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate
@@ -17,6 +18,22 @@ class MainActivity : ReactActivity() {
     // This is required for expo-splash-screen.
     setTheme(R.style.AppTheme);
     super.onCreate(null)
+    
+    val intent = this.getIntent()
+    if(intent != null) {
+      val extras = intent.getExtras()
+      if(extras != null) {
+        Log.i("TESTING", "MainActivity.onCreate | intent.extras:")
+        for(key in extras.keySet()) {
+          Log.i("TESTING", "MainActivity.onCreate | - $key")
+        }
+        Log.i("TESTING", "MainActivity.onCreate | /intent.extras")
+      } else {
+        Log.i("TESTING", "MainActivity.onCreate | intent.extras is null")
+      }
+    } else {
+      Log.i("TESTING", "MainActivity.onCreate | intent is null")
+    }
   }
 
   /**
